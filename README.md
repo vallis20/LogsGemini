@@ -47,33 +47,35 @@ Al finalizar la ejecución, se generará el archivo output.json con las etiqueta
 Este proyecto está pensado para ejecución local como script de línea de comandos.
 No requiere despliegue en servidores ni contenedores.
 
-## Construido con 🛠️
+## Construido con 
 
 Herramientas utilizadas para construir el proyecto:
-
-	•	Python – Lenguaje principal
+- Python – Lenguaje principal
+- Google Gemini API – Modelo LLM utilizado para clasificación
+- JSON – Formato de salida
+- Control de tasa (rate limiting) – Para respetar límites de cuota del modelo gratuito
 	
-	•	Google Gemini API – Modelo LLM utilizado para clasificación
-	
-	•	JSON – Formato de salida
-	
-	•	Control de tasa (rate limiting) – Para respetar límites de cuota del modelo gratuito
-	
-## Flujo de ejecución del sistema
+## 	Descripción del proceso
+1. Lectura de logs
+   
+El sistema carga el archivo logs.txt, donde cada línea representa un evento técnico independiente.
 
-El siguiente diagrama describe el flujo operativo del sistema de clasificación automática de logs, desde la ingesta de datos hasta la generación del archivo de salida estructurado.
+2. Procesamiento controlado
+   
+Los logs se agrupan en bloques para optimizar el consumo de la API y cumplir con las restricciones de cuota.
 
-Este flujo permite comprender rápidamente el proceso de negocio y la interacción con el modelo de lenguaje. 
+3. Clasificación con IA
 
-flowchart TD
-    A[Inicio] --> B[Lectura del archivo logs.txt]
-    B --> C[Segmentación de logs en bloques]
-    C --> D[Envío de bloques al modelo Gemini]
-    D --> E[Análisis semántico del contenido]
-    E --> F[Asignación de etiquetas temáticas]
-    F --> G[Generación del archivo output.json]
-    G --> H[Fin del proceso]
+Cada bloque es analizado por Google Gemini, que identifica el tipo de operación o evento técnico.
 
-## Autores ✒️
+4. Generación de resultados
+
+Las etiquetas obtenidas se almacenan en un archivo output.json, listo para su uso en análisis, monitoreo o auditoría.
+
+## 	Decisiones técnicas relevantes
+El sistema parte del supuesto de que el archivo de logs puede contener un volumen variable y potencialmente elevado de registros, por lo que no se procesa como un único bloque, antes del análisis, se calcula la cantidad total de logs y se dividen en bloques controlados, permitiendo un uso predecible del motor de lenguaje.
+Cada bloque se envía de forma secuencial al motor de clasificación, evitando saturar la API y reduciendo el riesgo de errores por límites de cuota o tasa de peticiones.
+
+## Autores 
 
 * **Estivalis Navarrete Guerrero**  [vallis20](https://github.com/vallis20)
