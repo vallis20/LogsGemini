@@ -34,6 +34,7 @@ https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://aistud
 4. Ejecutar el script:
 python main.py
 
+Al finalizar la ejecución, se generará el archivo output.json con las etiquetas temáticas correspondientes a cada bloque de logs procesado.
 
 ## Despliegue 📦
 
