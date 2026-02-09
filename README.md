@@ -20,18 +20,24 @@ Mira **Deployment** para conocer como desplegar el proyecto.
 - Archivo logs.txt
 
 ### Instalación 🔧
-1.  Clonar repositorio 
+1.  Clonar repositorio
+
 git clone https://github.com/vallis20/LogsGemini.git
+
 cd LogsGemini
 
-2. Instalación de dependencias 
+3. Instalación de dependencias 
+
 pip install -r requirements.txt
 
-3. Editar APIKey de google AI Studio
+4. Editar APIKey de google AI Studio
+
 Link para obtener el API Key:
+
 https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://aistudio.google.com/app/apikey&ved=2ahUKEwiYhrHbv8uSAxWBnCYFHXZKJXIQFnoECBkQAQ&usg=AOvVaw1WWenMsZaHnCnN4FhYRAe9
 
-4. Ejecutar el script:
+5. Ejecutar el script:
+
 python main.py
 
 Al finalizar la ejecución, se generará el archivo output.json con las etiquetas temáticas correspondientes a cada bloque de logs procesado.
@@ -44,9 +50,13 @@ No requiere despliegue en servidores ni contenedores.
 ## Construido con 🛠️
 
 Herramientas utilizadas para construir el proyecto:
+
 	•	Python – Lenguaje principal
+	
 	•	Google Gemini API – Modelo LLM utilizado para clasificación
+	
 	•	JSON – Formato de salida
+	
 	•	Control de tasa (rate limiting) – Para respetar límites de cuota del modelo gratuito
 	
 ## Flujo de ejecución del sistema
