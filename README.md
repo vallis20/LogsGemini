@@ -48,7 +48,21 @@ Herramientas utilizadas para construir el proyecto:
 	•	Google Gemini API – Modelo LLM utilizado para clasificación
 	•	JSON – Formato de salida
 	•	Control de tasa (rate limiting) – Para respetar límites de cuota del modelo gratuito
+	
+## Flujo de ejecución del sistema
 
+El siguiente diagrama describe el flujo operativo del sistema de clasificación automática de logs, desde la ingesta de datos hasta la generación del archivo de salida estructurado.
+
+Este flujo permite comprender rápidamente el proceso de negocio y la interacción con el modelo de lenguaje. 
+
+flowchart TD
+    A[Inicio] --> B[Lectura del archivo logs.txt]
+    B --> C[Segmentación de logs en bloques]
+    C --> D[Envío de bloques al modelo Gemini]
+    D --> E[Análisis semántico del contenido]
+    E --> F[Asignación de etiquetas temáticas]
+    F --> G[Generación del archivo output.json]
+    G --> H[Fin del proceso]
 
 ## Autores ✒️
 
