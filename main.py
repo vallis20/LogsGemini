@@ -34,7 +34,7 @@ ESPERA_SEGUNDOS = 15
 
 # Inicialización del cliente Gemini
 client = genai.Client(
-    api_key="AIzaSyC6eowv3jafsxX8ms6jrkOgTbewXEYCoSA"
+    api_key="API_GEMINI"
 )
 
 # FUNCIONES AUXILIARES
